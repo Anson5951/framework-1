@@ -72,7 +72,7 @@ export default defineConfig([
 ])
 ```
 
-[text](https://www.shadcn.io/terms)
+[Terms of shadcn.io](https://www.shadcn.io/terms)
 ```
 	Component Code
 	The UI components provided on shadcn.io are open source and available for use in your projects. You are free to:
