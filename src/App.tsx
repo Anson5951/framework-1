@@ -1,11 +1,11 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import './App.css'
 import BarChartComponent from './components/barChart'
 import { testService } from './services/testService'
 import { Checkbox } from './shadcn/components/ui/checkbox'
 import { Button } from './shadcn/lib/ui/button'
-import type { Joke } from './types/Joke'
 import type { Dataset } from './types/BarChartProps'
+import type { Joke } from './types/Joke'
 
 const localChartDataList = [
 	{
@@ -83,6 +83,8 @@ const localChartDataList = [
 ]
 function App() {
 
+	const [lastTime, setLastTime] = useState<number>(0);
+
 	const [joke, setJoke] = useState<Joke>();
 	const chartDataList = localChartDataList
 
@@ -92,10 +94,17 @@ function App() {
 
 	const [chartListIndex, setChartListIndex] = useState(0);
 	const currentChartList = useMemo(() => {
-		console.log('chartListIndex:', chartListIndex);
-		console.log('boundary:', chartListIndex % (chartDataList.length / 3) * 3, (chartListIndex % (chartDataList.length / 3) + 1) * 3);
+		// console.log('chartListIndex:', chartListIndex);
+		// console.log('boundary:', chartListIndex % (chartDataList.length / 3) * 3, (chartListIndex % (chartDataList.length / 3) + 1) * 3);
 		return chartDataList.slice(chartListIndex % (chartDataList.length / 3) * 3, (chartListIndex % (chartDataList.length / 3) + 1) * 3)
 	}, [chartListIndex, chartDataList]);
+
+	const [dynamicChartListIndex, setDynamicChartListIndex] = useState(0);
+	const dynamicCurrentChartList = useMemo(() => {
+		// console.log('dynamicChartListIndex:', dynamicChartListIndex);
+		// console.log('boundary:', dynamicChartListIndex % (chartDataList.length / 3) * 3, (dynamicChartListIndex % (chartDataList.length / 3) + 1) * 3);
+		return chartDataList.slice(dynamicChartListIndex % (chartDataList.length / 3) * 3, (dynamicChartListIndex % (chartDataList.length / 3) + 1) * 3)
+	}, [dynamicChartListIndex, chartDataList]);
 
 	const getJoke = () => testService.getJoke()
 		.then(response => {
@@ -104,14 +113,25 @@ function App() {
 		})
 
 	const getChartData = useCallback(() => {
-		console.log('Current Index:', index);
-		console.log('Current label:', label);
-		console.log('Current datasets:', dataset);
+		// console.log('Current Index:', index);
+		// console.log('Current label:', label);
+		// console.log('Current datasets:', dataset);
 		setIndex(index => (index + 1) % chartDataList.length);
 		const data = chartDataList[index];
 		setLabel(data.labels);
 		setDataset(data.datasets);
 	}, [index, chartDataList]);
+
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			const now = new Date().getTime()
+			console.log('Interval:', now - lastTime);
+			setLastTime(now);
+			setDynamicChartListIndex(index => index + 1);
+		}, 2000);
+		return () => clearInterval(interval);
+	}, [lastTime]);
 
 	return (
 		<>
@@ -168,6 +188,19 @@ function App() {
 			<Button onClick={() => setChartListIndex(index => index + 1)}>Get A Chart Data</Button>
 			<div className='flex gap-2 flex-wrap'>
 				{currentChartList.map((chartData, idx) => (
+					<div key={idx} className='w-[400px]'>
+						<BarChartComponent
+							labels={chartData.labels}
+							datasets={chartData.datasets}
+							title={`Chart ${idx + 1}`}
+						/>
+					</div>
+				))}
+			</div>
+
+			<p>// update charts using timer</p>
+			<div className='flex gap-2 flex-wrap'>
+				{dynamicCurrentChartList.map((chartData, idx) => (
 					<div key={idx} className='w-[400px]'>
 						<BarChartComponent
 							labels={chartData.labels}

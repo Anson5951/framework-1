@@ -3,7 +3,7 @@ import Chart from 'chart.js/auto';
 import type { BarChartProps } from '@/types/BarChartProps';
 
 
-const BarChart: React.FC<BarChartProps> = ({ labels, datasets, title = 'Chart' }) => {
+export const BarChart: React.FC<BarChartProps> = ({ labels, datasets, title = 'Chart' }) => {
 	const chartRef = useRef<HTMLCanvasElement>(null);
 	const chartInstance = useRef<Chart | null>(null);
 
