@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import { scheduler } from "./test/chartScheduler";
-import { useWebSocket } from "./test/useWebSocket";
-import { SCREEN_LAYOUTS } from "./test/screenLayouts";
-import { ChartRegistry } from "./test/ChartRegistry";
-import { SlotGrid } from "./test/SlotGrid";
-import { tableConfig } from "./test/tableConfig";
+import { scheduler } from "./core/ChartScheduler";
+import { useWebSocket } from "./hooks/useWebSocket";
+import { LAYOUT_CONFIG } from "./config/LayoutConfig";
+import { ChartRegistry } from "./core/ChartRegistry";
+import { SlotGrid } from "./components/SlotGrid";
+import { TABLE_CONFIG } from "./config/TableConfig";
 
 export default function App() {
 	const buffers = {
@@ -37,32 +37,32 @@ export default function App() {
 	const screenRef = useRef(0);
 	const layout = useMemo(() => {
 		console.log("Calculating layout for screenIndex:", screenIndex);
-		return SCREEN_LAYOUTS[screenIndex];
+		return LAYOUT_CONFIG[screenIndex];
 	}, [screenIndex]);
 
 	const visibleMap = useMemo(() => {
 		console.log("layout for screenIndex", screenIndex, "is", layout);
 		return {
-			cpu_1: layout.includes(tableConfig.cpu_1.name),
-			memory_1: layout.includes(tableConfig.memory_1.name),
-			net_in_1: layout.includes(tableConfig.net_in_1.name),
-			net_out_1: layout.includes(tableConfig.net_out_1.name),
-			disk_1: layout.includes(tableConfig.disk_1.name),
-			requests_1: layout.includes(tableConfig.requests_1.name),
+			cpu_1: layout.includes(TABLE_CONFIG.cpu_1.name),
+			memory_1: layout.includes(TABLE_CONFIG.memory_1.name),
+			net_in_1: layout.includes(TABLE_CONFIG.net_in_1.name),
+			net_out_1: layout.includes(TABLE_CONFIG.net_out_1.name),
+			disk_1: layout.includes(TABLE_CONFIG.disk_1.name),
+			requests_1: layout.includes(TABLE_CONFIG.requests_1.name),
 
-			cpu_2: layout.includes(tableConfig.cpu_2.name),
-			memory_2: layout.includes(tableConfig.memory_2.name),
-			net_in_2: layout.includes(tableConfig.net_in_2.name),
-			net_out_2: layout.includes(tableConfig.net_out_2.name),
-			disk_2: layout.includes(tableConfig.disk_2.name),
-			requests_2: layout.includes(tableConfig.requests_2.name),
+			cpu_2: layout.includes(TABLE_CONFIG.cpu_2.name),
+			memory_2: layout.includes(TABLE_CONFIG.memory_2.name),
+			net_in_2: layout.includes(TABLE_CONFIG.net_in_2.name),
+			net_out_2: layout.includes(TABLE_CONFIG.net_out_2.name),
+			disk_2: layout.includes(TABLE_CONFIG.disk_2.name),
+			requests_2: layout.includes(TABLE_CONFIG.requests_2.name),
 
-			cpu_3: layout.includes(tableConfig.cpu_3.name),
-			memory_3: layout.includes(tableConfig.memory_3.name),
-			net_in_3: layout.includes(tableConfig.net_in_3.name),
-			net_out_3: layout.includes(tableConfig.net_out_3.name),
-			disk_3: layout.includes(tableConfig.disk_3.name),
-			requests_3: layout.includes(tableConfig.requests_3.name),
+			cpu_3: layout.includes(TABLE_CONFIG.cpu_3.name),
+			memory_3: layout.includes(TABLE_CONFIG.memory_3.name),
+			net_in_3: layout.includes(TABLE_CONFIG.net_in_3.name),
+			net_out_3: layout.includes(TABLE_CONFIG.net_out_3.name),
+			disk_3: layout.includes(TABLE_CONFIG.disk_3.name),
+			requests_3: layout.includes(TABLE_CONFIG.requests_3.name),
 		}
 	}, [screenIndex, layout]);
 
@@ -70,7 +70,7 @@ export default function App() {
 		scheduler.start();
 
 		const timer = setInterval(() => {
-			const next = (screenRef.current + 1) % SCREEN_LAYOUTS.length;
+			const next = (screenRef.current + 1) % LAYOUT_CONFIG.length;
 			screenRef.current = next;
 			setScreenIndex(next);
 		}, 15000);

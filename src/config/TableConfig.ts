@@ -1,5 +1,5 @@
 
-export const tableConfig = {
+export const TABLE_CONFIG = {
 	cpu_1: {
 		name: "cpu_1",
 		interval: 3000,

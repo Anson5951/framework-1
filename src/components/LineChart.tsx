@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
-import { scheduler } from "../test/chartScheduler";
+import { scheduler } from "../core/ChartScheduler";
 
 export function LineChart({
 	chartId,
