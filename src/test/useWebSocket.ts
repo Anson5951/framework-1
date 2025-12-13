@@ -11,6 +11,7 @@ export function useWebSocket(buffers: Record<string, any>) {
 			if (msg.type !== "charts:update") return;
 			console.log("Received data:", msg);
 			Object.entries(msg.charts).forEach(([id, data]: any) => {
+				console.log(`Updating chart ${id}:`, data);
 				const ref = buffers[id];
 				if (!ref) return;
 
