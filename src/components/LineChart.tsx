@@ -69,6 +69,7 @@ export function LineChart({
 				height: "100%"
 			}}
 		>
+			{chartId}
 			<canvas ref={canvasRef} height={240} />
 		</div>
 	);

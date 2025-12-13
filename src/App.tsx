@@ -80,7 +80,7 @@ export default function App() {
 
 	return (
 		<div style={{ padding: 16 }}>
-			<h2>Dashboard – Screen {screenIndex + 1}</h2>
+			<h2>Dashboard - Screen {screenIndex + 1}</h2>
 
 			{/* 🔥 chart 真正 render 在 slot 裡 */}
 			<SlotGrid layout={layout} charts={charts} />

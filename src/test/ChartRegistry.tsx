@@ -25,7 +25,8 @@ export function ChartRegistry({
 	return {
 		cpu_1: (
 			<LineChart
-				chartId={"cpu_" + (screenIndex + 1)}
+				key={"cpu_1"}
+				chartId={"cpu_1"}
 				bufferRef={buffers["cpu_1"]}
 				interval={INTERVAL.cpu}
 				visible={visibleMap.cpu_1}
@@ -34,7 +35,8 @@ export function ChartRegistry({
 
 		memory_1: (
 			<LineChart
-				chartId={"memory_" + (screenIndex + 1)}
+				key={"memory_1"}
+				chartId={"memory_1"}
 				bufferRef={buffers["memory_1"]}
 				interval={INTERVAL.memory}
 				visible={visibleMap.memory_1}
@@ -43,7 +45,8 @@ export function ChartRegistry({
 
 		net_in_1: (
 			<LineChart
-				chartId={"net_in_" + (screenIndex + 1)}
+				key={"net_in_1"}
+				chartId={"net_in_1"}
 				bufferRef={buffers["net_in_1"]}
 				interval={INTERVAL.net_in}
 				visible={visibleMap.net_in_1}
@@ -52,7 +55,8 @@ export function ChartRegistry({
 
 		net_out_1: (
 			<LineChart
-				chartId={"net_out_" + (screenIndex + 1)}
+				key={"net_out_1"}
+				chartId={"net_out_1"}
 				bufferRef={buffers["net_out_1"]}
 				interval={INTERVAL.net_out}
 				visible={visibleMap.net_out_1}
@@ -61,7 +65,8 @@ export function ChartRegistry({
 
 		disk_1: (
 			<GaugeChart
-				chartId={"disk_" + (screenIndex + 1)}
+				key={"disk_1"}
+				chartId={"disk_1"}
 				bufferRef={buffers["disk_1"]}
 				interval={INTERVAL.disk}
 				visible={visibleMap.disk_1}
@@ -70,7 +75,8 @@ export function ChartRegistry({
 
 		requests_1: (
 			<BarChart
-				chartId={"requests_" + (screenIndex + 1)}
+				key={"requests_1"}
+				chartId={"requests_1"}
 				bufferRef={buffers["requests_1"]}
 				interval={INTERVAL.requests}
 				visible={visibleMap.requests_1}
@@ -80,7 +86,8 @@ export function ChartRegistry({
 
 		cpu_2: (
 			<LineChart
-				chartId={"cpu_" + (screenIndex + 1)}
+				key={"cpu_2"}
+				chartId={"cpu_2"}
 				bufferRef={buffers["cpu_2"]}
 				interval={INTERVAL.cpu}
 				visible={visibleMap.cpu_2}
@@ -89,7 +96,8 @@ export function ChartRegistry({
 
 		memory_2: (
 			<LineChart
-				chartId={"memory_" + (screenIndex + 1)}
+				key={"memory_2"}
+				chartId={"memory_2"}
 				bufferRef={buffers["memory_2"]}
 				interval={INTERVAL.memory}
 				visible={visibleMap.memory_2}
@@ -98,7 +106,8 @@ export function ChartRegistry({
 
 		net_in_2: (
 			<LineChart
-				chartId={"net_in_" + (screenIndex + 1)}
+				key={"net_in_2"}
+				chartId={"net_in_2"}
 				bufferRef={buffers["net_in_2"]}
 				interval={INTERVAL.net_in}
 				visible={visibleMap.net_in_2}
@@ -107,7 +116,8 @@ export function ChartRegistry({
 
 		net_out_2: (
 			<LineChart
-				chartId={"net_out_" + (screenIndex + 1)}
+				key={"net_out_2"}
+				chartId={"net_out_2"}
 				bufferRef={buffers["net_out_2"]}
 				interval={INTERVAL.net_out}
 				visible={visibleMap.net_out_2}
@@ -116,7 +126,8 @@ export function ChartRegistry({
 
 		disk_2: (
 			<GaugeChart
-				chartId={"disk_" + (screenIndex + 1)}
+				key={"disk_2"}
+				chartId={"disk_2"}
 				bufferRef={buffers["disk_2"]}
 				interval={INTERVAL.disk}
 				visible={visibleMap.disk_2}
@@ -125,7 +136,8 @@ export function ChartRegistry({
 
 		requests_2: (
 			<BarChart
-				chartId={"requests_" + (screenIndex + 1)}
+				key={"requests_2"}
+				chartId={"requests_2"}
 				bufferRef={buffers["requests_2"]}
 				interval={INTERVAL.requests}
 				visible={visibleMap.requests_2}
@@ -135,7 +147,8 @@ export function ChartRegistry({
 
 		cpu_3: (
 			<LineChart
-				chartId={"cpu_" + (screenIndex + 1)}
+				key={"cpu_3"}
+				chartId={"cpu_3"}
 				bufferRef={buffers["cpu_3"]}
 				interval={INTERVAL.cpu}
 				visible={visibleMap.cpu_3}
@@ -144,7 +157,8 @@ export function ChartRegistry({
 
 		memory_3: (
 			<LineChart
-				chartId={"memory_" + (screenIndex + 1)}
+				key={"memory_3"}
+				chartId={"memory_3"}
 				bufferRef={buffers["memory_3"]}
 				interval={INTERVAL.memory}
 				visible={visibleMap.memory_3}
@@ -153,7 +167,8 @@ export function ChartRegistry({
 
 		net_in_3: (
 			<LineChart
-				chartId={"net_in_" + (screenIndex + 1)}
+				key={"net_in_3"}
+				chartId={"net_in_3"}
 				bufferRef={buffers["net_in_3"]}
 				interval={INTERVAL.net_in}
 				visible={visibleMap.net_in_3}
@@ -162,7 +177,8 @@ export function ChartRegistry({
 
 		net_out_3: (
 			<LineChart
-				chartId={"net_out_" + (screenIndex + 1)}
+				key={"net_out_3"}
+				chartId={"net_out_3"}
 				bufferRef={buffers["net_out_3"]}
 				interval={INTERVAL.net_out}
 				visible={visibleMap.net_out_3}
@@ -171,7 +187,8 @@ export function ChartRegistry({
 
 		disk_3: (
 			<GaugeChart
-				chartId={"disk_" + (screenIndex + 1)}
+				key={"disk_3"}
+				chartId={"disk_3"}
 				bufferRef={buffers["disk_3"]}
 				interval={INTERVAL.disk}
 				visible={visibleMap.disk_3}
@@ -180,7 +197,8 @@ export function ChartRegistry({
 
 		requests_3: (
 			<BarChart
-				chartId={"requests_" + (screenIndex + 1)}
+				key={"requests_3"}
+				chartId={"requests_3"}
 				bufferRef={buffers["requests_3"]}
 				interval={INTERVAL.requests}
 				visible={visibleMap.requests_3}
