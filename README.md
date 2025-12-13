@@ -1,12 +1,12 @@
-App.tsx for testing.
-Wall.tsx for final poduct.
+"App.tsx" for testing.
+"Wall.tsx" for final poduct.
 
 # React + TypeScript + Vite
 ## Alova for API integration
-Create alovaInstance in alovaInstance.ts according to situations. Use them in XXXservice.ts.
+Create alovaInstance in "alovaInstance.ts" according to situations. Use them in "XXXservice.ts".
 
 ## Chart.js for charts
-create basic chart type and use it in the wall.
+create basic chart type in "components" and use it in the wall.
 
 ## Quotes of MIT
 [MIT license of shadcn.io](https://www.shadcn.io/terms)
