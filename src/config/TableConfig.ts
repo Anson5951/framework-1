@@ -1,4 +1,7 @@
-
+/**
+ * Table configuration settings
+ * no chart data included
+ */
 export const TABLE_CONFIG = {
 	cpu_1: {
 		name: "cpu_1",

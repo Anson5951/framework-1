@@ -4,7 +4,9 @@ type Task = {
   render: () => void;
 };
 
-/** to schedule chart rendering. Avoiding Interval drifting  in setTimeout */
+/**
+ * centralized scheduler for chart rendering to avoid interval drifting
+ */
 class ChartScheduler {
   private tasks = new Map<string, Task>();
   private rafId: number | null = null;

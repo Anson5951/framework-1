@@ -1,4 +1,8 @@
 import type { JSX } from "react";
+
+/**
+ * make layout independent
+ */
 export function SlotGrid({
 	layout,
 	charts

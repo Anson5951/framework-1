@@ -3,7 +3,10 @@ import { GaugeChart } from "../components/GaugeChart";
 import { BarChart } from "../components/BarChart";
 import { TABLE_CONFIG } from "../config/TableConfig";
 
-
+/**
+ * Chart Registry
+ * avoiding unmount happening while changing screens
+ */
 export function ChartRegistry({
 	buffers,
 	visibleMap,
