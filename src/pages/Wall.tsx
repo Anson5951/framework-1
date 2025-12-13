@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { BarChart } from '../components/barChart';
+import { BarChart } from '../components/BarChart';
 
 const localChartDataList = [
 	{

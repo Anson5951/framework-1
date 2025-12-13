@@ -2,22 +2,25 @@ import { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 import { scheduler } from "../test/chartScheduler";
 
-export function BarChart({ chartId, bufferRef, interval, visible }: any) {
+export function GaugeChart({ chartId, bufferRef, interval, visible }: any) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const chartRef = useRef<Chart | null>(null);
 
   useEffect(() => {
     chartRef.current = new Chart(canvasRef.current!, {
-      type: "bar",
-      data: { labels: [], datasets: [{ data: [] }] },
-      options: { animation: false }
+      type: "doughnut",
+      data: { datasets: [{ data: [0, 100] }] },
+      options: {
+        rotation: -90,
+        circumference: 180,
+        cutout: "70%",
+        animation: false
+      }
     });
 
     scheduler.register(chartId, interval, () => {
-      const d = bufferRef.current;
-      if (!d) return;
-      chartRef.current!.data.labels = d.categories;
-      chartRef.current!.data.datasets[0].data = d.values;
+      const v = bufferRef.current?.value ?? 0;
+      chartRef.current!.data.datasets[0].data = [v, 100 - v];
       chartRef.current!.update("none");
     });
 
