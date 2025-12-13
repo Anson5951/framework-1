@@ -33,14 +33,12 @@ export function LineChart({
 			},
 			options: {
 				animation: false,
-				parsing: false, // 🔥 關鍵 1：告訴 Chart.js 不要自動解析
+				parsing: false,
 				normalized: true,
 				scales: {
 					x: {
-						type: "linear", // 🔥 關鍵 2：x 是數值（timestamp）
-						ticks: {
-							display: false
-						}
+						type: "linear",
+						ticks: { display: false }
 					},
 					y: {
 						beginAtZero: true
@@ -50,17 +48,28 @@ export function LineChart({
 		});
 
 		scheduler.register(chartId, interval, () => {
+			// 🔒 防禦：chart 尚未建立時不 render
 			if (!chartRef.current) return;
+
 			chartRef.current.data.datasets[0].data = bufferRef.current;
 			chartRef.current.update("none");
 		});
 
 		return () => {
 			chartRef.current?.destroy();
+			chartRef.current = null;
 		};
 	}, []);
 
-	if (!visible) return null;
-
-	return <canvas ref={canvasRef} height={240} />;
+	return (
+		<div
+			style={{
+				display: visible ? "block" : "none",
+				width: "100%",
+				height: "100%"
+			}}
+		>
+			<canvas ref={canvasRef} height={240} />
+		</div>
+	);
 }
