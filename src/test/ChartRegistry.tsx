@@ -1,15 +1,8 @@
 import { LineChart } from "../components/LineChart";
 import { GaugeChart } from "../components/GaugeChart";
 import { BarChart } from "../components/BarChart";
+import { tableConfig } from "./tableConfig";
 
-const INTERVAL = {
-	cpu: 3000,
-	memory: 4000,
-	net_in: 6000,
-	net_out: 8000,
-	disk: 10000,
-	requests: 5000
-};
 
 export function ChartRegistry({
 	buffers,
@@ -25,183 +18,183 @@ export function ChartRegistry({
 	return {
 		cpu_1: (
 			<LineChart
-				key={"cpu_1"}
-				chartId={"cpu_1"}
-				bufferRef={buffers["cpu_1"]}
-				interval={INTERVAL.cpu}
-				visible={visibleMap.cpu_1}
+				key={tableConfig.cpu_1.name}
+				chartId={tableConfig.cpu_1.name}
+				bufferRef={buffers[tableConfig.cpu_1.name]}
+				interval={tableConfig.cpu_1.interval}
+				visible={visibleMap[tableConfig.cpu_1.name]}
 			/>
 		),
 
 		memory_1: (
 			<LineChart
-				key={"memory_1"}
-				chartId={"memory_1"}
-				bufferRef={buffers["memory_1"]}
-				interval={INTERVAL.memory}
-				visible={visibleMap.memory_1}
+				key={tableConfig.memory_1.name}
+				chartId={tableConfig.memory_1.name}
+				bufferRef={buffers[tableConfig.memory_1.name]}
+				interval={tableConfig.memory_1.interval}
+				visible={visibleMap[tableConfig.memory_1.name]}
 			/>
 		),
 
 		net_in_1: (
 			<LineChart
-				key={"net_in_1"}
-				chartId={"net_in_1"}
-				bufferRef={buffers["net_in_1"]}
-				interval={INTERVAL.net_in}
-				visible={visibleMap.net_in_1}
+				key={tableConfig.net_in_1.name}
+				chartId={tableConfig.net_in_1.name}
+				bufferRef={buffers[tableConfig.net_in_1.name]}
+				interval={tableConfig.net_in_1.interval}
+				visible={visibleMap[tableConfig.net_in_1.name]}
 			/>
 		),
 
 		net_out_1: (
 			<LineChart
-				key={"net_out_1"}
-				chartId={"net_out_1"}
-				bufferRef={buffers["net_out_1"]}
-				interval={INTERVAL.net_out}
-				visible={visibleMap.net_out_1}
+				key={tableConfig.net_out_1.name}
+				chartId={tableConfig.net_out_1.name}
+				bufferRef={buffers[tableConfig.net_out_1.name]}
+				interval={tableConfig.net_out_1.interval}
+				visible={visibleMap[tableConfig.net_out_1.name]}
 			/>
 		),
 
 		disk_1: (
 			<GaugeChart
-				key={"disk_1"}
-				chartId={"disk_1"}
-				bufferRef={buffers["disk_1"]}
-				interval={INTERVAL.disk}
-				visible={visibleMap.disk_1}
+				key={tableConfig.disk_1.name}
+				chartId={tableConfig.disk_1.name}
+				bufferRef={buffers[tableConfig.disk_1.name]}
+				interval={tableConfig.disk_1.interval}
+				visible={visibleMap[tableConfig.disk_1.name]}
 			/>
 		),
 
 		requests_1: (
 			<BarChart
-				key={"requests_1"}
-				chartId={"requests_1"}
-				bufferRef={buffers["requests_1"]}
-				interval={INTERVAL.requests}
-				visible={visibleMap.requests_1}
+				key={tableConfig.requests_1.name}
+				chartId={tableConfig.requests_1.name}
+				bufferRef={buffers[tableConfig.requests_1.name]}
+				interval={tableConfig.requests_1.interval}
+				visible={visibleMap[tableConfig.requests_1.name]}
 			/>
 		),
 
 
 		cpu_2: (
 			<LineChart
-				key={"cpu_2"}
-				chartId={"cpu_2"}
-				bufferRef={buffers["cpu_2"]}
-				interval={INTERVAL.cpu}
-				visible={visibleMap.cpu_2}
+				key={tableConfig.cpu_2.name}
+				chartId={tableConfig.cpu_2.name}
+				bufferRef={buffers[tableConfig.cpu_2.name]}
+				interval={tableConfig.cpu_2.interval}
+				visible={visibleMap[tableConfig.cpu_2.name]}
 			/>
 		),
 
 		memory_2: (
 			<LineChart
-				key={"memory_2"}
-				chartId={"memory_2"}
-				bufferRef={buffers["memory_2"]}
-				interval={INTERVAL.memory}
-				visible={visibleMap.memory_2}
+				key={tableConfig.memory_2.name}
+				chartId={tableConfig.memory_2.name}
+				bufferRef={buffers[tableConfig.memory_2.name]}
+				interval={tableConfig.memory_2.interval}
+				visible={visibleMap[tableConfig.memory_2.name]}
 			/>
 		),
 
 		net_in_2: (
 			<LineChart
-				key={"net_in_2"}
-				chartId={"net_in_2"}
-				bufferRef={buffers["net_in_2"]}
-				interval={INTERVAL.net_in}
-				visible={visibleMap.net_in_2}
+				key={tableConfig.net_in_2.name}
+				chartId={tableConfig.net_in_2.name}
+				bufferRef={buffers[tableConfig.net_in_2.name]}
+				interval={tableConfig.net_in_2.interval}
+				visible={visibleMap[tableConfig.net_in_2.name]}
 			/>
 		),
 
 		net_out_2: (
 			<LineChart
-				key={"net_out_2"}
-				chartId={"net_out_2"}
-				bufferRef={buffers["net_out_2"]}
-				interval={INTERVAL.net_out}
-				visible={visibleMap.net_out_2}
+				key={tableConfig.net_out_2.name}
+				chartId={tableConfig.net_out_2.name}
+				bufferRef={buffers[tableConfig.net_out_2.name]}
+				interval={tableConfig.net_out_2.interval}
+				visible={visibleMap[tableConfig.net_out_2.name]}
 			/>
 		),
 
 		disk_2: (
 			<GaugeChart
-				key={"disk_2"}
-				chartId={"disk_2"}
-				bufferRef={buffers["disk_2"]}
-				interval={INTERVAL.disk}
-				visible={visibleMap.disk_2}
+				key={tableConfig.disk_2.name}
+				chartId={tableConfig.disk_2.name}
+				bufferRef={buffers[tableConfig.disk_2.name]}
+				interval={tableConfig.disk_2.interval}
+				visible={visibleMap[tableConfig.disk_2.name]}
 			/>
 		),
 
 		requests_2: (
 			<BarChart
-				key={"requests_2"}
-				chartId={"requests_2"}
-				bufferRef={buffers["requests_2"]}
-				interval={INTERVAL.requests}
-				visible={visibleMap.requests_2}
+				key={tableConfig.requests_2.name}
+				chartId={tableConfig.requests_2.name}
+				bufferRef={buffers[tableConfig.requests_2.name]}
+				interval={tableConfig.requests_2.interval}
+				visible={visibleMap[tableConfig.requests_2.name]}
 			/>
 		),
 
 
 		cpu_3: (
 			<LineChart
-				key={"cpu_3"}
-				chartId={"cpu_3"}
-				bufferRef={buffers["cpu_3"]}
-				interval={INTERVAL.cpu}
-				visible={visibleMap.cpu_3}
+				key={tableConfig.cpu_3.name}
+				chartId={tableConfig.cpu_3.name}
+				bufferRef={buffers[tableConfig.cpu_3.name]}
+				interval={tableConfig.cpu_3.interval}
+				visible={visibleMap[tableConfig.cpu_3.name]}
 			/>
 		),
 
 		memory_3: (
 			<LineChart
-				key={"memory_3"}
-				chartId={"memory_3"}
-				bufferRef={buffers["memory_3"]}
-				interval={INTERVAL.memory}
-				visible={visibleMap.memory_3}
+				key={tableConfig.memory_3.name}
+				chartId={tableConfig.memory_3.name}
+				bufferRef={buffers[tableConfig.memory_3.name]}
+				interval={tableConfig.memory_3.interval}
+				visible={visibleMap[tableConfig.memory_3.name]}
 			/>
 		),
 
 		net_in_3: (
 			<LineChart
-				key={"net_in_3"}
-				chartId={"net_in_3"}
-				bufferRef={buffers["net_in_3"]}
-				interval={INTERVAL.net_in}
-				visible={visibleMap.net_in_3}
+				key={tableConfig.net_in_3.name}
+				chartId={tableConfig.net_in_3.name}
+				bufferRef={buffers[tableConfig.net_in_3.name]}
+				interval={tableConfig.net_in_3.interval}
+				visible={visibleMap[tableConfig.net_in_3.name]}
 			/>
 		),
 
 		net_out_3: (
 			<LineChart
-				key={"net_out_3"}
-				chartId={"net_out_3"}
-				bufferRef={buffers["net_out_3"]}
-				interval={INTERVAL.net_out}
-				visible={visibleMap.net_out_3}
+				key={tableConfig.net_out_3.name}
+				chartId={tableConfig.net_out_3.name}
+				bufferRef={buffers[tableConfig.net_out_3.name]}
+				interval={tableConfig.net_out_3.interval}
+				visible={visibleMap[tableConfig.net_out_3.name]}
 			/>
 		),
 
 		disk_3: (
 			<GaugeChart
-				key={"disk_3"}
-				chartId={"disk_3"}
-				bufferRef={buffers["disk_3"]}
-				interval={INTERVAL.disk}
-				visible={visibleMap.disk_3}
+				key={tableConfig.disk_3.name}
+				chartId={tableConfig.disk_3.name}
+				bufferRef={buffers[tableConfig.disk_3.name]}
+				interval={tableConfig.disk_3.interval}
+				visible={visibleMap[tableConfig.disk_3.name]}
 			/>
 		),
 
 		requests_3: (
 			<BarChart
-				key={"requests_3"}
-				chartId={"requests_3"}
-				bufferRef={buffers["requests_3"]}
-				interval={INTERVAL.requests}
-				visible={visibleMap.requests_3}
+				key={tableConfig.requests_3.name}
+				chartId={tableConfig.requests_3.name}
+				bufferRef={buffers[tableConfig.requests_3.name]}
+				interval={tableConfig.requests_3.interval}
+				visible={visibleMap[tableConfig.requests_3.name]}
 			/>
 		)
 	};

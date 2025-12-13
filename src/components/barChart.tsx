@@ -9,7 +9,7 @@ export function BarChart({
 	visible
 }: {
 	chartId: string;
-	bufferRef: React.MutableRefObject<{
+	bufferRef: React.RefObject<{
 		categories: string[];
 		values: number[];
 	} | null>;

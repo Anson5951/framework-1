@@ -9,7 +9,7 @@ export function LineChart({
 	visible
 }: {
 	chartId: string;
-	bufferRef: React.MutableRefObject<Array<{ x: number; y: number }>>;
+	bufferRef: React.RefObject<Array<{ x: number; y: number }>>;
 	interval: number;
 	visible: boolean;
 }) {
@@ -69,7 +69,6 @@ export function LineChart({
 				height: "100%"
 			}}
 		>
-			{chartId}
 			<canvas ref={canvasRef} height={240} />
 		</div>
 	);

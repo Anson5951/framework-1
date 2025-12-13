@@ -5,6 +5,7 @@ import { useWebSocket } from "./test/useWebSocket";
 import { SCREEN_LAYOUTS } from "./test/screenLayouts";
 import { ChartRegistry } from "./test/ChartRegistry";
 import { SlotGrid } from "./test/SlotGrid";
+import { tableConfig } from "./test/tableConfig";
 
 export default function App() {
 	const buffers = {
@@ -14,12 +15,14 @@ export default function App() {
 		net_out_1: useRef<any[]>([]),
 		disk_1: useRef<{ value: number } | null>(null),
 		requests_1: useRef<{ categories: string[]; values: number[] } | null>(null),
+
 		cpu_2: useRef<any[]>([]),
 		memory_2: useRef<any[]>([]),
 		net_in_2: useRef<any[]>([]),
 		net_out_2: useRef<any[]>([]),
 		disk_2: useRef<{ value: number } | null>(null),
 		requests_2: useRef<{ categories: string[]; values: number[] } | null>(null),
+
 		cpu_3: useRef<any[]>([]),
 		memory_3: useRef<any[]>([]),
 		net_in_3: useRef<any[]>([]),
@@ -40,26 +43,26 @@ export default function App() {
 	const visibleMap = useMemo(() => {
 		console.log("layout for screenIndex", screenIndex, "is", layout);
 		return {
-			cpu_1: layout.includes("cpu_1"),
-			memory_1: layout.includes("memory_1"),
-			net_in_1: layout.includes("net_in_1"),
-			net_out_1: layout.includes("net_out_1"),
-			disk_1: layout.includes("disk_1"),
-			requests_1: layout.includes("requests_1"),
+			cpu_1: layout.includes(tableConfig.cpu_1.name),
+			memory_1: layout.includes(tableConfig.memory_1.name),
+			net_in_1: layout.includes(tableConfig.net_in_1.name),
+			net_out_1: layout.includes(tableConfig.net_out_1.name),
+			disk_1: layout.includes(tableConfig.disk_1.name),
+			requests_1: layout.includes(tableConfig.requests_1.name),
 
-			cpu_2: layout.includes("cpu_2"),
-			memory_2: layout.includes("memory_2"),
-			net_in_2: layout.includes("net_in_2"),
-			net_out_2: layout.includes("net_out_2"),
-			disk_2: layout.includes("disk_2"),
-			requests_2: layout.includes("requests_2"),
+			cpu_2: layout.includes(tableConfig.cpu_2.name),
+			memory_2: layout.includes(tableConfig.memory_2.name),
+			net_in_2: layout.includes(tableConfig.net_in_2.name),
+			net_out_2: layout.includes(tableConfig.net_out_2.name),
+			disk_2: layout.includes(tableConfig.disk_2.name),
+			requests_2: layout.includes(tableConfig.requests_2.name),
 
-			cpu_3: layout.includes("cpu_3"),
-			memory_3: layout.includes("memory_3"),
-			net_in_3: layout.includes("net_in_3"),
-			net_out_3: layout.includes("net_out_3"),
-			disk_3: layout.includes("disk_3"),
-			requests_3: layout.includes("requests_3"),
+			cpu_3: layout.includes(tableConfig.cpu_3.name),
+			memory_3: layout.includes(tableConfig.memory_3.name),
+			net_in_3: layout.includes(tableConfig.net_in_3.name),
+			net_out_3: layout.includes(tableConfig.net_out_3.name),
+			disk_3: layout.includes(tableConfig.disk_3.name),
+			requests_3: layout.includes(tableConfig.requests_3.name),
 		}
 	}, [screenIndex, layout]);
 
@@ -75,7 +78,6 @@ export default function App() {
 		return () => clearInterval(timer);
 	}, []);
 
-	// 🔥 關鍵：chart registry 先建好
 	const charts = ChartRegistry({ buffers, visibleMap, screenIndex });
 
 	return (

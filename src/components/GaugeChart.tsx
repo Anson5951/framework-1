@@ -9,7 +9,7 @@ export function GaugeChart({
 	visible
 }: {
 	chartId: string;
-	bufferRef: React.MutableRefObject<{ value: number } | null>;
+	bufferRef: React.RefObject<{ value: number } | null>;
 	interval: number;
 	visible: boolean;
 }) {
