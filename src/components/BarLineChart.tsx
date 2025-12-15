@@ -9,7 +9,7 @@ import {
 	Tooltip,
 	Legend
 } from 'chart.js';
-import type { BarLineChartData } from '@/types/DashboardSchema';
+import type { BarLineChartWidget } from '../config/dashboardSchema';
 
 Chart.register(
 	CategoryScale,
@@ -22,7 +22,7 @@ Chart.register(
 );
 
 interface Props {
-	data: BarLineChartData;
+	data: BarLineChartWidget;
 }
 
 export default function BarLineChart({ data }: Props) {
@@ -32,6 +32,7 @@ export default function BarLineChart({ data }: Props) {
 	useEffect(() => {
 		if (!canvasRef.current) return;
 
+		// 🔴 每次 snapshot 來，直接銷毀舊 chart
 		if (chartRef.current) {
 			chartRef.current.destroy();
 		}
@@ -55,11 +56,12 @@ export default function BarLineChart({ data }: Props) {
 			}
 		});
 
+		// ✅ cleanup（你之前問題的解藥）
 		return () => {
 			chartRef.current?.destroy();
 			chartRef.current = null;
 		};
-	}, [data]);
+	}, [data]); // 👈 snapshot 改 → 整張 chart 重建
 
 	return (
 		<div style={{ width: '100%', height: '100%' }}>

@@ -1,5 +1,5 @@
-import BarLineChart from './components/BarLineChart';
 import { useWebSocket } from './hooks/useWebSocket';
+import { renderWidget } from './components/renderWidget';
 
 export default function App() {
 	const snapshot = useWebSocket('ws://localhost:8080');
@@ -7,12 +7,14 @@ export default function App() {
 	if (!snapshot) return <div>Waiting for data...</div>;
 
 	return (
-		<div className="grid">
-			{snapshot.layout.blocks.map(block => (
-				<div key={block.blockId} className="block">
-					<BarLineChart data={block.chart} />
-				</div>
-			))}
+		<div
+			style={{
+				display: 'grid',
+				gridTemplateColumns: '1fr 1fr',
+				gap: '16px'
+			}}
+		>
+			{snapshot.widgets.map(renderWidget)}
 		</div>
 	);
 }
