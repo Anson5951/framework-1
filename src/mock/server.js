@@ -103,14 +103,14 @@ wss.on('connection', ws => {
 									labels: ['10:00', '10:05', '10:10', '10:15'],
 									datasets: [
 										{
-											type: 'bar',
-											label: 'Load',
-											data: randArr(4, 40, 100)
-										},
-										{
 											type: 'line',
 											label: 'Avg',
 											data: randArr(4, 30, 80)
+										},
+										{
+											type: 'bar',
+											label: 'Load',
+											data: randArr(4, 40, 100)
 										}
 									]
 								}
