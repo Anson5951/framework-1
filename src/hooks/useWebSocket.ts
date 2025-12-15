@@ -7,8 +7,9 @@ export function useWebSocket(url: string) {
 	useEffect(() => {
 		const ws = new WebSocket(url);
 
-		ws.onmessage = event => {
-			setSnapshot(JSON.parse(event.data));
+		ws.onmessage = e => {
+			console.log('Received data:', e.data);
+			setSnapshot(JSON.parse(e.data));
 		};
 
 		return () => ws.close();

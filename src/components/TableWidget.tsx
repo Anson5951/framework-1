@@ -1,25 +1,21 @@
-import type { TableWidget } from '../config/dashboardSchema';
+import type { TableWidget as TableWidgetType } from '../config/dashboardSchema';
 
-interface Props {
-	data: TableWidget;
-}
-
-export default function TableWidget({ data }: Props) {
+export default function TableWidget({ widget }: { widget: TableWidgetType }) {
 	return (
 		<div>
-			<h3>{data.title}</h3>
-			<table border={1} width="100%">
+			<h3>{widget.title}</h3>
+			<table width="100%" border={1}>
 				<thead>
 					<tr>
-						{data.columns.map(col => (
+						{widget.columns.map(col => (
 							<th key={col.key}>{col.label}</th>
 						))}
 					</tr>
 				</thead>
 				<tbody>
-					{data.rows.map((row, idx) => (
-						<tr key={idx}>
-							{data.columns.map(col => (
+					{widget.rows.map((row, i) => (
+						<tr key={i}>
+							{widget.columns.map(col => (
 								<td key={col.key}>{row[col.key]}</td>
 							))}
 						</tr>

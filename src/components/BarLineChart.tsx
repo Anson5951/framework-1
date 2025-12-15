@@ -1,67 +1,60 @@
 import { useEffect, useRef } from 'react';
-import {
-	Chart,
-	CategoryScale,
-	LinearScale,
-	BarElement,
-	LineElement,
-	PointElement,
-	Tooltip,
-	Legend
-} from 'chart.js';
-import type { BarLineChartWidget } from '../config/dashboardSchema';
-
-Chart.register(
-	CategoryScale,
-	LinearScale,
-	BarElement,
-	LineElement,
-	PointElement,
-	Tooltip,
-	Legend
-);
+import { Chart } from 'chart.js';
+import type { BarLineChartWidget, ThemeConfig } from '../config/dashboardSchema';
 
 interface Props {
-	data: BarLineChartWidget;
+	widget: BarLineChartWidget;
+	theme?: ThemeConfig;
 }
 
-export default function BarLineChart({ data }: Props) {
+export default function BarLineChart({ widget, theme }: Props) {
 	const canvasRef = useRef<HTMLCanvasElement | null>(null);
 	const chartRef = useRef<Chart | null>(null);
 
 	useEffect(() => {
-		if (!canvasRef.current) return;
+		const canvas = canvasRef.current;
+		if (!canvas) return;
 
-		// 🔴 每次 snapshot 來，直接銷毀舊 chart
+		const existing = Chart.getChart(canvas);
+		if (existing) existing.destroy();
+
 		if (chartRef.current) {
 			chartRef.current.destroy();
+			chartRef.current = null;
 		}
 
-		chartRef.current = new Chart(canvasRef.current, {
-			type: 'bar', // base type
+		chartRef.current = new Chart(canvas, {
+			type: 'bar',
 			data: {
-				labels: data.labels,
-				datasets: data.datasets
+				labels: widget.chart.labels,
+				datasets: widget.chart.datasets.map(ds => ({
+					...ds,
+					backgroundColor:
+						ds.type === 'bar'
+							? ds.color ?? widget.style?.colors?.bar ?? theme?.chartColors?.bar
+							: undefined,
+					borderColor:
+						ds.type === 'line'
+							? ds.color ?? widget.style?.colors?.line ?? theme?.chartColors?.line
+							: undefined
+				}))
 			},
 			options: {
 				responsive: true,
 				maintainAspectRatio: false,
 				plugins: {
-					legend: { display: true },
-					title: {
-						display: true,
-						text: data.title
-					}
+					title: { display: true, text: widget.title },
+					legend: { display: true }
 				}
 			}
 		});
 
-		// ✅ cleanup（你之前問題的解藥）
 		return () => {
-			chartRef.current?.destroy();
+			const chart = Chart.getChart(canvas);
+			if (chart) chart.destroy();
 			chartRef.current = null;
 		};
-	}, [data]); // 👈 snapshot 改 → 整張 chart 重建
+	}, [widget, theme]);
 
 	return (
 		<div style={{ width: '100%', height: '100%' }}>
