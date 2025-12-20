@@ -1,8 +1,8 @@
-import type { Widget, ThemeConfig } from '../config/dashboardSchema';
+import type { ThemeConfig, Widget } from '../config/dashboardSchema';
 import BarLineChart from './BarLineChart';
 import TableWidget from './TableWidget';
 
-export function renderWidget(widget: Widget, theme?: ThemeConfig) {
+export function RenderWidget(widget: Widget, theme?: ThemeConfig) {
 	switch (widget.type) {
 		case 'table':
 			return <TableWidget widget={widget} />;

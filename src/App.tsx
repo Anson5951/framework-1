@@ -1,5 +1,4 @@
-
-import { renderWidget } from './components/renderWidget';
+import { RenderWidget } from './components/RenderWidget';
 import { useWebSocket } from './hooks/useWebSocket';
 
 export default function App() {
@@ -14,10 +13,10 @@ export default function App() {
 			style={{
 				display: 'grid',
 				gridTemplateColumns: `repeat(${snapshot.layout.columns}, 1fr)`,
-				gap: snapshot.layout.gap
+				gap: snapshot.layout.gap,
 			}}
 		>
-			{snapshot.blocks.map(block => (
+			{snapshot.blocks.map((block) => (
 				<div
 					key={block.id}
 					style={{
@@ -25,9 +24,9 @@ export default function App() {
 						border: block.border
 							? `${block.border.width}px solid ${block.border.color}`
 							: snapshot.theme?.blockBorder
-								? `${snapshot.theme.blockBorder.width}px solid ${snapshot.theme.blockBorder.color}`
-								: undefined,
-						padding: 8
+							? `${snapshot.theme.blockBorder.width}px solid ${snapshot.theme.blockBorder.color}`
+							: undefined,
+						padding: 8,
 					}}
 				>
 					{/* 👇 block 內排版 */}
@@ -37,18 +36,17 @@ export default function App() {
 							gridTemplateColumns: block.layout
 								? `repeat(${block.layout.columns}, 1fr)`
 								: '1fr',
-							gap: block.layout?.gap ?? 0
+							gap: block.layout?.gap ?? 0,
 						}}
 					>
 						{block.widgets.map((widget, idx) => (
 							<div key={idx}>
-								{renderWidget(widget, snapshot.theme)}
+								{RenderWidget(widget, snapshot.theme)}
 							</div>
 						))}
 					</div>
 				</div>
 			))}
-
 		</div>
 	);
 }
